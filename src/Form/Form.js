@@ -8,12 +8,16 @@ class Form extends Component {
       name: '',
       date: '',
       time: '',
-      guests: 1
+      number: 1
     }
   }
 
   handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value})
+    if(e.target.name === 'number'){
+      this.setState({ [e.target.name]: parseInt(e.target.value)})
+    } else {
+      this.setState({ [e.target.name]: e.target.value})
+    }
   }
 
   submitNewReservation = (e) => {
@@ -60,7 +64,7 @@ class Form extends Component {
         />
         <input
           type='number'
-          placeholder='guests'
+          placeholder='number'
           value={this.state.number}
           name='number'
           onChange={this.handleChange}
